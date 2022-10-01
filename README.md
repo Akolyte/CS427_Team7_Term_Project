@@ -23,7 +23,7 @@ The code for CS427 Android app.
 </br>
 Meeting time: Sundays - 10:00am (CDT/CT) ( Central Daylight Time / Central Time )
 </br> 
-Meeting location (zoom link): https://illinois.zoom.us/j/87574942696?pwd=NGhWU2F6WThqK3h0TzFrTzZ3NnN0QT09
+Meeting location (zoom link): https://illinois.zoom.us/j/88021817462?pwd=MXcxS0lhYU1RYUdTUGVDeGFIbGtZUT09
 </br>
 PDF Location: https://docs.google.com/document/d/1zdlz1R1aZpph_y5JAZF9ZUkkEvqqLz--yaKdOpcYtGI/edit?usp=sharing
 </br> 
