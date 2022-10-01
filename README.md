@@ -13,8 +13,8 @@ The code for CS427 Android app.
 | Hojin Ryoo          | hojinr2       | Akolyte       | Manager     | Python, Javascript, R, SQL, Java |
 | Kai Li              | kaili6        | kaili6CS411   | Developer   | Java          |
 | Christopher Fischer | cjfisch2      | chrisfisch914 | Developer   | Java, Python, R         |
-| Hanhui Song         | hanhuis2      | HanhuiSong    | Developer   |               |
-|               |               |             | Developer     |               |
+| Hanhui Song         | hanhuis2      | HanhuiSong    | Developer   | Java, Python, R              |
+| Jiayuan Li          | jiayuan8      | jiayuan8      | Developer   | Java, Python, R               |
 <br/>
 
 
@@ -46,6 +46,7 @@ During the meeting we introduced each other and went about completing the tasks 
 | kaili6        | Setup the environment and build  | N/A |
 | cjfisch2 | Setup the environment and build | N/A |
 | hanhuis2 | Setup the environment and build | N/A |
+| jiayuan8 | Setup the environment and build | N/A |
   
   
 </br>
