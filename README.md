@@ -7,14 +7,14 @@ The code for CS427 Android app.
 <br/>
 | Name          | NetID         | GitHub ID   | Role          | Experience    |
 | ------------- | ------------- | ------------| ------------- | ------------- |
-|               |               |             |               |               |            
-|               |               |             |               |               |
-|               |               |             |               |               |
-|               |               |             |               |               |
-|               |               |             |               |               |
-|               |               |             |               |               |
-|               |               |             |               |               |
-|               |               |             |               |               |
+| Abrielle Agron| aa106         | aagron      | Developer     | Python, R, Java, C |            
+| Ruhang Ma     | ruhangm2      | ruhang97    | Tech Lead     | Python, Java, C, C++, Go |
+| Mingzhi Li    | mingzhi2      | MagicWaterBee | Developer   |  Java/Python, C++  |
+| Hojin Ryoo    | hojinr2       | Akolyte     | Manager       | Python, Javascript, R, SQL, Java |
+| Kai Li        | kaili6        | kaili6CS411 | Developer     | Java          |
+|               |               |             | Developer     |               |
+|               |               |             | Developer     |               |
+|               |               |             | Developer     |               |
 <br/>
 
 
