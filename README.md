@@ -34,6 +34,7 @@ Members present: List the NetID of the people who attended the meeting
 </br>
 Meeting notes: Explain the overall team progress and a summary of discussion
 </br>
+</br>
 During the meeting we introduced each other and went about completing the tasks for Project Milestone 1. We had already created our GitHub repo, and updated it with the information relevant to the milestone. We set a time to meet (Sunday, 10:00am CT, and we created the pdf for submission. We added the necessary screenshots and added the link for the github and then submitted it through the proper channels on Campuswire.
 </br>
 | NetID          | Progress from last week         | Tasks for next week   |
