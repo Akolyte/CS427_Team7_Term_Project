@@ -58,14 +58,26 @@ Members present: List the NetID of the people who attended the meeting
 </br>
 Meeting notes: Explain the overall team progress and a summary of discussion
 </br>
+This week we discussed Project Milestone 2, and dealt out tasks for each group member to do. Teams were split into 3 groups, 1 handling the informal and fully dressed requirements, another group for the Class Diagram, and the last group handling the Component Transition Graph. We then set meetingn times for each group to meet, and fully delved into the project deliverables and the peer review individual requirement.
+</br>
+Group 1: Requirements
+Group 2: Class Diagram
+Group3: Component Transition Graph
+</br>
+Meeting times: 
+</br>
+Group 1: 5pm CST 10/10
+Group 2: TBD EST 10/11
+Group 3: TBD TBD TBD
+</br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
+| aa106          | N/A                             |  Group 1                     |
+| mingzhi2       | N/A                             |  Group 3                     |
+| hojinr2        | N/A                             |  Group 2                     |
+| kaili6         | N/A                             |  Group 2                     |
+| cjfisch2       | N/A                             |  Group 1                     |
+| hanhuis2       | N/A                             |  Group 1                     |
 |                |                                 |                       |
 |                |                                 |                       |
 </br>
