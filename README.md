@@ -62,9 +62,11 @@ Meeting notes: Explain the overall team progress and a summary of discussion
 This week we discussed Project Milestone 2, and dealt out tasks for each group member to do. Teams were split into 3 groups, 1 handling the informal and fully dressed requirements, another group for the Class Diagram, and the last group handling the Component Transition Graph. We then set meetingn times for each group to meet, and fully delved into the project deliverables and the peer review individual requirement.
 </br>
 </br>
-Group 1: Requirements
+Group 1: Requirements (Ruhang is in here)
+</br>
 Group 2: Class Diagram
-Group3: Component Transition Graph
+</br>
+Group3: Component Transition Graph (Jiayuan is in here)
 </br>
 </br>
 Meeting times: 
