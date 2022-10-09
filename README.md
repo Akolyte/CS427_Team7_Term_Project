@@ -71,7 +71,9 @@ Meeting times:
 </br>
 </br>
 Group 1: 5pm CST 10/10
+</br>
 Group 2: TBD EST 10/11
+</br>
 Group 3: TBD TBD TBD
 </br>
 </br>
