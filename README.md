@@ -25,8 +25,10 @@ Meeting time: Sundays - 10:00am (CDT/CT) ( Central Daylight Time / Central Time 
 </br> 
 Meeting location (zoom link): https://illinois.zoom.us/j/88021817462?pwd=MXcxS0lhYU1RYUdTUGVDeGFIbGtZUT09
 </br>
-PDF Location: https://docs.google.com/document/d/1zdlz1R1aZpph_y5JAZF9ZUkkEvqqLz--yaKdOpcYtGI/edit?usp=sharing
+Milestone1 Doc Location: https://docs.google.com/document/d/1zdlz1R1aZpph_y5JAZF9ZUkkEvqqLz--yaKdOpcYtGI/edit?usp=sharing
 </br> 
+MileStone2 Doc Location: https://docs.google.com/document/d/1xWUX8dV8E7S0ctFXBoQGJoVwSedsUtZ_GHtiH8mA9Nc/edit?usp=sharing
+</br>
 </br>
 <b>Week 1</b>
 </br>
