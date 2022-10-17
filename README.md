@@ -100,16 +100,19 @@ Members present: List the NetID of the people who attended the meeting
 </br>
 Meeting notes: Explain the overall team progress and a summary of discussion
 </br>
+</br>
+This week we discussed reviewed our progress on Milestone 2, and gathered all the materials necessary to submit. We reviewed the materials as a group to make some final changes. We also planned out that we would schedule a meeting once Milestone 3 has been released for the class. 
+</br>
+</br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
+| aa106         | Wrote up informal requirements and fully dressed use cases  | N/A |
+| ruhangm2      | Wrote up informal requirements and fully dressed use cases  | N/A | 
+| mingzhi2      | Created Component Transition Graph | N/A |
+| hojinr2       | Created UML Class Diagram | TBD until the next milestone is released |
+| kaili6        | Created UML Class Diagram | N/A |
+| cjfisch2 | Wrote up informal requirements and fully dressed use cases | N/A |
+| hanhuis2 | Wrote up informal requirements and fully dressed use cases | N/A |
 </br>
 
 
