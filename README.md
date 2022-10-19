@@ -104,15 +104,18 @@ Meeting notes: Explain the overall team progress and a summary of discussion
 This week we discussed reviewed our progress on Milestone 2, and gathered all the materials necessary to submit. We reviewed the materials as a group to make some final changes. We also planned out that we would schedule a meeting once Milestone 3 has been released for the class. 
 </br>
 </br>
+Hanhui + Mingzhi meeting at 6:00pm CST 10/19/2022
+</br>
+</br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
-| aa106         | Wrote up informal requirements and fully dressed use cases  | N/A |
-| ruhangm2      | Wrote up informal requirements and fully dressed use cases  | N/A | 
-| mingzhi2      | Created Component Transition Graph | N/A |
-| hojinr2       | Created UML Class Diagram | TBD until the next milestone is released |
-| kaili6        | Created UML Class Diagram | N/A |
-| cjfisch2 | Wrote up informal requirements and fully dressed use cases | N/A |
-| hanhuis2 | Wrote up informal requirements and fully dressed use cases | N/A |
+| aa106         | Wrote up informal requirements and fully dressed use cases  | Customized UI for different Users |
+| ruhangm2      | Wrote up informal requirements and fully dressed use cases  | Login Page, sign up, login | 
+| mingzhi2      | Created Component Transition Graph | Login Page, sign up, login |
+| hojinr2       | Created UML Class Diagram | List of cities per user provider |
+| kaili6        | Created UML Class Diagram | Login with user credentials and see the previously added cities  |
+| cjfisch2 | Wrote up informal requirements and fully dressed use cases | Ability to add new locations or remove a location |
+| hanhuis2 | Wrote up informal requirements and fully dressed use cases | Login Page, sign up, login |
 </br>
 
 
