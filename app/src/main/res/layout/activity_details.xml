@@ -29,10 +29,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Show Map" />
+
         <Button
-            android:id="@+id/deleteButton"
+            android:id="@+id/deleteLocationButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onClick"
             android:text="Delete Location" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

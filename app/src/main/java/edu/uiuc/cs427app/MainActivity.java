@@ -1,6 +1,7 @@
 package edu.uiuc.cs427app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,26 +16,35 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
-    private List<String> cities;
+    private String username = "chris";
+    private String preferencesKey = "cities";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cities = new ArrayList<String>();
-        cities.add("Champaign");
-        cities.add("Chicago");
-        cities.add("Los Angeles");
-        cities.add("Dallas");
+        Set<String> cities = getSharedPreferences(username, 0).getStringSet(preferencesKey, null);
 
+        if (cities == null) {
+            cities = new HashSet<>();
+            cities.add("Champaign");
+            cities.add("Chicago");
+            cities.add("Los Angeles");
+            cities.add("Dallas");
+            getSharedPreferences(username, MODE_PRIVATE).edit().putStringSet(preferencesKey, cities).commit();
+        }
+
+        cities = getSharedPreferences(username, 0).getStringSet(preferencesKey, null);
         for (String city : cities) {
             createCityLayout(city);
         }

@@ -1,5 +1,6 @@
 package edu.uiuc.cs427app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Set;
 
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -37,7 +40,21 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        //Implement this (create an Intent that goes to a new Activity, which shows the map)
+        switch (view.getId()) {
+            case R.id.deleteLocationButton:
+                removeLocation();
+                break;
+        }
+    }
+
+    private void removeLocation() {
+        String cityName = getIntent().getStringExtra("city").toString();
+        Set<String> cities = getSharedPreferences("chris", 0).getStringSet("cities", null);
+        cities.remove(cityName);
+        getSharedPreferences("chris", 0).edit().putStringSet("cities", cities);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
 
