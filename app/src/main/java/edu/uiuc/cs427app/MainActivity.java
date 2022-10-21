@@ -15,6 +15,10 @@ import edu.uiuc.cs427app.databinding.ActivityMainBinding;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textview.MaterialTextView;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -64,40 +68,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void createCityLayout(String city) {
-        LinearLayout parentLayout = findViewById(R.id.citiesLayout);
-
         LinearLayout childLayout = new LinearLayout(this);
         childLayout.setOrientation(LinearLayout.HORIZONTAL);
-        childLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(50)));
+        childLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
         TextView text = createCityTextView(city);
         childLayout.addView(text);
+
+        View spacer = new View(this);
+        spacer.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 1));
+        childLayout.addView(spacer);
+
         Button showDetailsButton = createShowDetailsButton(city);
         childLayout.addView(showDetailsButton);
+
+        LinearLayout parentLayout = findViewById(R.id.citiesLayout);
         parentLayout.addView(childLayout);
     }
 
     private Button createShowDetailsButton(String city) {
-        Button showDetailsButton = new Button(this);
+        Button showDetailsButton = new MaterialButton(this);
         showDetailsButton.setText("SHOW DETAILS");
         showDetailsButton.setOnClickListener(this);
         showDetailsButton.setTag(city);
         showDetailsButton.setLayoutParams(new LinearLayout.LayoutParams(
-                dpToPx(45),
                 LinearLayout.LayoutParams.WRAP_CONTENT,
-                1.0f
+                LinearLayout.LayoutParams.WRAP_CONTENT
         ));
 
         return showDetailsButton;
     }
 
     private TextView createCityTextView(String city) {
-        TextView text = new TextView(this);
+        TextView text = new MaterialTextView(this);
         text.setText(city);
         text.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                1.0f
+                LinearLayout.LayoutParams.WRAP_CONTENT
         ));
         return text;
     }
