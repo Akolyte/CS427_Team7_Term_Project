@@ -1,7 +1,6 @@
 package edu.uiuc.cs427app;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,36 +18,31 @@ import android.widget.TextView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
     private String username = "chris";
-    private String preferencesKey = "cities";
+    private UserProvider userProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        userProvider = new UserProvider(this, username);
 
-        Set<String> cities = getSharedPreferences(username, 0).getStringSet(preferencesKey, null);
+        Set<String> cities = userProvider.getCities();
 
         if (cities == null) {
-            cities = new HashSet<>();
-            cities.add("Champaign");
-            cities.add("Chicago");
-            cities.add("Los Angeles");
-            cities.add("Dallas");
-            getSharedPreferences(username, MODE_PRIVATE).edit().putStringSet(preferencesKey, cities).commit();
+            userProvider.addCity("Champaign");
+            userProvider.addCity("Chicago");
+            userProvider.addCity("Dallas");
+            userProvider.addCity("Los Angeles");
         }
 
-        cities = getSharedPreferences(username, 0).getStringSet(preferencesKey, null);
+        cities = userProvider.getCities();
         for (String city : cities) {
             createCityLayout(city);
         }
@@ -107,11 +101,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 LinearLayout.LayoutParams.WRAP_CONTENT
         ));
         return text;
-    }
-
-    private int dpToPx(int dp) {
-        float density = getApplicationContext().getResources().getDisplayMetrics().density;
-        return Math.round((float) dp * density + + 0.5f);
     }
 }
 
