@@ -11,6 +11,7 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
     private String username = "chris";
     private UserProvider userProvider;
 
+    // Sets up AddLocationActivity and constructs UserProvider
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +19,8 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
         userProvider = new UserProvider(this, username);
     }
 
+    // Handles onclick events associated with this Activity
+    // For this activity there should only be one button to add a new location
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -27,6 +30,8 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    // Retrieves city information from thew new city form and stores it
+    // Returns to Main Activity when complete
     private void addLocation() {
         TextView text = (TextView)findViewById(R.id.cityInput);
         String newCity = text.getText().toString();

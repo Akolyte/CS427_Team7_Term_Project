@@ -14,6 +14,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private String username = "chris";
     private UserProvider userProvider;
 
+    // Initializes Details Activity with information about the weather in city
+    // associated with this activity.
+    // Sets up UserProvider
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    // Handles onclick events for the Details Activity
+    // Currently handles the  deleteLocationButton
+    // TODO: handle mapButton
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -47,6 +53,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    // Retrieves the city associated with this instace of the DetailsActivity
+    // and removes it from the user's list of cities.
+    // Redirects to the Main Activity when called.
     private void removeLocation() {
         String city = getIntent().getStringExtra("city").toString();
         userProvider.removeCity(city);

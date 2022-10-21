@@ -24,9 +24,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
+    private final String SHOW_DETAILS = "SHOW DETAILS";
+
     private String username = "chris";
     private UserProvider userProvider;
 
+    // Sets up the MainActivity and constructs the UserProvider
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    // onClick handler for the MainActivity
+    // Handles "Add A Location" button and all "Show Details" buttons for every city
     @Override
     public void onClick(View view) {
         Intent intent;
@@ -61,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+    // Creates and formats horizontal linear layout to house the city text and "Show Details" button
     private void createCityLayout(String city) {
         LinearLayout childLayout = new LinearLayout(this);
         childLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -80,9 +86,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         parentLayout.addView(childLayout);
     }
 
+    // Creates the "Show Details" button with proper formatting
     private Button createShowDetailsButton(String city) {
         Button showDetailsButton = new MaterialButton(this);
-        showDetailsButton.setText("SHOW DETAILS");
+        showDetailsButton.setText(SHOW_DETAILS);
         showDetailsButton.setOnClickListener(this);
         showDetailsButton.setTag(city);
         showDetailsButton.setLayoutParams(new LinearLayout.LayoutParams(
@@ -93,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return showDetailsButton;
     }
 
+    // Creates the text which display the city name with proper formatting
     private TextView createCityTextView(String city) {
         TextView text = new MaterialTextView(this);
         text.setText(city);
