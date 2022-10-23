@@ -67,7 +67,7 @@ public class UserProvider {
                 activity.setTheme(R.style.Theme_UArizona);
                 break;
             case 3:
-                activity.setTheme(R.style.Theme_MyFirstApp);
+                activity.setTheme(R.style.Theme_LSU);
                 break;
         }
     }
@@ -83,7 +83,7 @@ public class UserProvider {
                 activity.setTheme(R.style.Theme_UArizona);
                 break;
             case 3:
-                activity.setTheme(R.style.Theme_MyFirstApp);
+                activity.setTheme(R.style.Theme_LSU);
                 break;
         }
     }
