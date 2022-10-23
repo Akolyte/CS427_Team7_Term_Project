@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Team 7</string>
+    <string-array name="themes">
+        <item>Choose A Theme</item>
+        <item>UIUC</item>
+        <item>Arizona</item>
+        <item>Theme3</item>
+    </string-array>
 </resources>
+
