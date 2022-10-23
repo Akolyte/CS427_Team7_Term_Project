@@ -11,8 +11,11 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import edu.uiuc.cs427app.databinding.ActivityMainBinding;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
@@ -20,7 +23,7 @@ import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -28,15 +31,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String username = "chris";
     private UserProvider userProvider;
+    private int check = 0;
 
     // Sets up the MainActivity and constructs the UserProvider
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         userProvider = new UserProvider(this, username);
-
         Set<String> cities = userProvider.getCities();
+        userProvider.initializeTheme(userProvider, this);
+        setContentView(R.layout.activity_main);
 
         if (cities == null) {
             userProvider.addCity("Champaign");
@@ -49,6 +53,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (String city : cities) {
             createCityLayout(city);
         }
+
+        Spinner spinner = (Spinner) findViewById(R.id.buttonSelectTheme);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.themes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
     // onClick handler for the MainActivity
@@ -64,6 +76,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("city", city);
         }
         startActivity(intent);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View v, int position,
+                               long id) {
+        if(++check > 1) {
+            userProvider.selectTheme(position);
+            userProvider.updateTheme(userProvider, this);
+        }
+
+//
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // TODO Auto-generated method stub
     }
 
     // Creates and formats horizontal linear layout to house the city text and "Show Details" button

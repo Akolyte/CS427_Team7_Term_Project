@@ -20,8 +20,10 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
         userProvider = new UserProvider(this, username);
+        userProvider.initializeTheme(userProvider, this);
+        setContentView(R.layout.activity_details);
+
 
         // Process the Intent payload that has opened this Activity and show the information accordingly
         String cityName = getIntent().getStringExtra("city").toString();

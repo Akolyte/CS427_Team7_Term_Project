@@ -1,6 +1,8 @@
 package edu.uiuc.cs427app;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
 import java.util.HashSet;
@@ -10,6 +12,7 @@ import java.util.Set;
 public class UserProvider {
     private final SharedPreferences sharedPreferences;
     private final String CITIES = "cities";
+    private final String THEME = "theme";
 
     // Constructor
     public UserProvider(Context ctx, String user) {
@@ -40,4 +43,49 @@ public class UserProvider {
                 .putStringSet(CITIES, cities)
                 .commit();
     }
+
+    public int getTheme(){
+        return sharedPreferences.getInt(THEME, 0);
+    }
+
+    public void selectTheme(int themeInt){
+        sharedPreferences
+                .edit()
+                .putInt(THEME, themeInt)
+                .commit();
+    }
+
+    public void updateTheme(UserProvider userProvider, Activity activity){
+        int themeID = userProvider.getTheme();
+        activity.finish();
+        activity.startActivity(new Intent(activity, activity.getClass()));
+        switch (themeID) {
+            case 1:
+                activity.setTheme(R.style.Theme_UIUC);
+                break;
+            case 2:
+                activity.setTheme(R.style.Theme_UArizona);
+                break;
+            case 3:
+                activity.setTheme(R.style.Theme_MyFirstApp);
+                break;
+        }
+    }
+
+    public void initializeTheme(UserProvider userProvider, Activity activity){
+        int themeID = userProvider.getTheme();
+        switch (themeID) {
+            default:
+            case 1:
+                activity.setTheme(R.style.Theme_UIUC);
+                break;
+            case 2:
+                activity.setTheme(R.style.Theme_UArizona);
+                break;
+            case 3:
+                activity.setTheme(R.style.Theme_MyFirstApp);
+                break;
+        }
+    }
+
 }

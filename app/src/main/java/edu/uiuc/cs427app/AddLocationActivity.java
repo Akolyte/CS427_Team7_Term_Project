@@ -15,8 +15,9 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_location);
         userProvider = new UserProvider(this, username);
+        userProvider.initializeTheme(userProvider, this);
+        setContentView(R.layout.activity_add_location);
     }
 
     // Handles onclick events associated with this Activity
