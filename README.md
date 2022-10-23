@@ -123,18 +123,21 @@ Hanhui + Mingzhi meeting at 6:00pm CST 10/19/2022
 </br>
 Members present: List the NetID of the people who attended the meeting
 </br>
+</br>
 Meeting notes: Explain the overall team progress and a summary of discussion
+</br>
+</br>
+This week we discussed the progress that had been made on milestone 3. Chris and Abigail had basically finished their features, the login page has been written out and will be implemented in the oncoming week. The list of cities per user provider and the ability to retain previously added cities will also be implemented this week. During our next meeting on 10/30 we will review our features, compare them to teh requirements for the assignment, and submit our work.
+</br>
 </br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
+| aa106         | Customized UI for different Users implemented | NA |
+| ruhangm2      | Login Page, sign up, login not yet implemented | Login Page, sign up, login |
+| hojinr2       | List of cities per user provider across classes not yet implemented | List of cities per user provider across classes |
+| kaili6        | Login with user credentials and see the previously added cities not yet implemented | Login with user credentials and see the previously added cities |
+| cjfisch2      | Ability to add new locations or remove a location implemented | NA |
+| hanhuis2      | Login Page, sign up, login not yet implemented | Login Page, sign up, login not yet implemented |
 </br>
 
 
