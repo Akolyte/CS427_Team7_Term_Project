@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="illini_orange">#FF5F05</color>
+    <color name="heritage_orange">#F5821E</color>
+    <color name="illini_blue">#13294B</color>
+    <color name="industrial_blue">#CAD9EF</color>
+    <color name="arizona_blue">#0C234B</color>
+    <color name="ua_red">#AB0520</color>
+    <color name="azurite">#1E5288</color>
 </resources>
