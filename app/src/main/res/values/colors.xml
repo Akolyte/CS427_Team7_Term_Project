@@ -14,4 +14,8 @@
     <color name="arizona_blue">#0C234B</color>
     <color name="ua_red">#AB0520</color>
     <color name="azurite">#1E5288</color>
+    <color name="lsue_purple">#461D7C</color>
+    <color name="lsue_gold">#FDD023</color>
+    <color name="lsue_gold_shade">#FFE891</color>
+
 </resources>
