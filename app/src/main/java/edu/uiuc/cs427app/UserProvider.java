@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,10 +14,12 @@ public class UserProvider {
     private final SharedPreferences sharedPreferences;
     private final String CITIES = "cities";
     private final String THEME = "theme";
+    private String username;
 
     // Constructor
     public UserProvider(Context ctx, String user) {
         this.sharedPreferences = ctx.getSharedPreferences(user, 0);
+        this.username = user;
     }
 
     // Returns all cities associated with a user
@@ -58,7 +61,9 @@ public class UserProvider {
     public void updateTheme(UserProvider userProvider, Activity activity){
         int themeID = userProvider.getTheme();
         activity.finish();
-        activity.startActivity(new Intent(activity, activity.getClass()));
+        Intent intent = new Intent(activity, activity.getClass());
+        intent.putExtra("username",this.username);
+        activity.startActivity(intent);
         switch (themeID) {
             case 1:
                 activity.setTheme(R.style.Theme_UIUC);
