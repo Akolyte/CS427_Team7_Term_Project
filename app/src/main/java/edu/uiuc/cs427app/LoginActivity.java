@@ -93,6 +93,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     * */
     // TODO: acquire and store theme info in account manager
     private void attemptRegister() {
+        if (username.getText().toString().equals("") || password.getText().toString().equals("")) {
+            // If the input is mal-formatted
+            Toast.makeText(LoginActivity.this, "Username or password cannot be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Account account = findAccountByUsername(username);
         if (account != null) {
             Toast.makeText(LoginActivity.this, "Account already existed " + username.getText().toString(), Toast.LENGTH_SHORT).show();
