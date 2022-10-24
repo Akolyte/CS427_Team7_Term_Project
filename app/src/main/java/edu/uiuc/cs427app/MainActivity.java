@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private final String SHOW_DETAILS = "SHOW DETAILS";
 
-    private String username = "chris";
+    private String username;
     private UserProvider userProvider;
     private int check = 0;
 
@@ -38,10 +38,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        username = getIntent().getStringExtra("username");
         userProvider = new UserProvider(this, username);
         Set<String> cities = userProvider.getCities();
         userProvider.initializeTheme(userProvider, this);
         setContentView(R.layout.activity_main);
+        setTitle(getString(R.string.app_name)+'-'+username);
 
         if (cities == null) {
             userProvider.addCity("Champaign");
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String city = (String)view.getTag();
             intent = new Intent(this, DetailsActivity.class);
             intent.putExtra("city", city);
+            intent.putExtra("username", username);
         }
         startActivity(intent);
     }

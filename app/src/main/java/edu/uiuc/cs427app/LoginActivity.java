@@ -82,6 +82,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             am.setAuthToken(account, "com.team7", authToken);
             // TODO: retrieve info from account manager and apply to UserProvider
             Intent mainActivityIntent = new Intent(this, MainActivity.class);
+            mainActivityIntent.putExtra("username",username.getText().toString());
             startActivity(mainActivityIntent);
         }
     }
