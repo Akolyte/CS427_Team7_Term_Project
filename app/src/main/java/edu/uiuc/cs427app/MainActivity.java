@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         if (view.getId() == R.id.buttonAddLocation) {
             intent = new Intent(this, AddLocationActivity.class);
+            intent.putExtra("username", username);
         } else if (view.getId() == R.id.buttonSignOff) {
             intent = new Intent(this, LoginActivity.class);
         } else {

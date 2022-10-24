@@ -24,7 +24,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         userProvider = new UserProvider(this, username);
         userProvider.initializeTheme(userProvider, this);
         setContentView(R.layout.activity_details);
-
+        setTitle(getString(R.string.app_name)+'-'+username);
 
         // Process the Intent payload that has opened this Activity and show the information accordingly
         String cityName = getIntent().getStringExtra("city").toString();
