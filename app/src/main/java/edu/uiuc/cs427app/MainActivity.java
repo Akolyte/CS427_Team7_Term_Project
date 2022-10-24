@@ -1,5 +1,6 @@
 package edu.uiuc.cs427app;
 
+import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -70,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         if (view.getId() == R.id.buttonAddLocation) {
             intent = new Intent(this, AddLocationActivity.class);
+        } else if (view.getId() == R.id.buttonSignOff) {
+            intent = new Intent(this, LoginActivity.class);
         } else {
             String city = (String)view.getTag();
             intent = new Intent(this, DetailsActivity.class);

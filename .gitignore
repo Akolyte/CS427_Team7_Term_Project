@@ -1,3 +1,7 @@
+#Ignore settings specific to local environment
 local.properties
+
+#Ignore build files
 .gradle
 .idea
+.vscode
