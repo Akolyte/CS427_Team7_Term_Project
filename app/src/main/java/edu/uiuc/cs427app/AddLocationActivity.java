@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddLocationActivity extends AppCompatActivity implements View.OnClickListener {
-    private String username = "chris";
+    private String username;
     private UserProvider userProvider;
 
     // Sets up AddLocationActivity and constructs UserProvider
