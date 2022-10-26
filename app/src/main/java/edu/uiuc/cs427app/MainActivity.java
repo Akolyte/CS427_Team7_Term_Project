@@ -45,13 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.app_name)+'-'+username);
 
-        if (cities == null) {
-            userProvider.addCity("Champaign");
-            userProvider.addCity("Chicago");
-            userProvider.addCity("Dallas");
-            userProvider.addCity("Los Angeles");
-        }
-
         cities = userProvider.getCities();
         for (String city : cities) {
             createCityLayout(city);
