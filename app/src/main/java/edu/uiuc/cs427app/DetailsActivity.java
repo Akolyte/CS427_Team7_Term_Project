@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private String username = "chris";
+    private String username;
     private UserProvider userProvider;
 
     // Initializes Details Activity with information about the weather in city
@@ -20,10 +20,11 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        username = getIntent().getStringExtra("username");
         userProvider = new UserProvider(this, username);
         userProvider.initializeTheme(userProvider, this);
         setContentView(R.layout.activity_details);
-
+        setTitle(getString(R.string.app_name)+'-'+username);
 
         // Process the Intent payload that has opened this Activity and show the information accordingly
         String cityName = getIntent().getStringExtra("city").toString();

@@ -15,9 +15,11 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        username = getIntent().getStringExtra("username");
         userProvider = new UserProvider(this, username);
         userProvider.initializeTheme(userProvider, this);
         setContentView(R.layout.activity_add_location);
+        setTitle(getString(R.string.app_name)+'-'+username);
     }
 
     // Handles onclick events associated with this Activity
@@ -39,6 +41,7 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
         userProvider.addCity(newCity);
 
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("username",username);
         startActivity(intent);
     }
 }

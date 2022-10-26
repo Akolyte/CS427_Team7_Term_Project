@@ -17,24 +17,26 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize = "32sp"
-            android:textStyle = "bold"
-            android:text="CS427 Project App" />
+            android:text="CS427 Project App"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize = "28sp"
-            android:textStyle = "bold"
-            android:text="List of Locations" />
+            android:text="List of Locations"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView5"
@@ -66,6 +68,13 @@
             android:layout_height="100dp"
             android:text="Choose a Theme"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/buttonSignOff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="Sign Off" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
