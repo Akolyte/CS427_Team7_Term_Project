@@ -40,12 +40,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         username = getIntent().getStringExtra("username");
         userProvider = new UserProvider(this, username);
-        Set<String> cities = userProvider.getCities();
         userProvider.initializeTheme(userProvider, this);
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.app_name)+'-'+username);
 
-        cities = userProvider.getCities();
+        Set<String> cities = userProvider.getCities();
         for (String city : cities) {
             createCityLayout(city);
         }
