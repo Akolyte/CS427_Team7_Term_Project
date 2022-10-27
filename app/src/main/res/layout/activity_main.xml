@@ -61,14 +61,6 @@
             android:onClick="onClick"
             android:text="Add a location" />
 
-
-        <Spinner
-            android:id="@+id/buttonSelectTheme"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="Choose a Theme"
-            tools:ignore="SpeakableTextPresentCheck" />
-
         <Button
             android:id="@+id/buttonSignOff"
             android:layout_width="match_parent"

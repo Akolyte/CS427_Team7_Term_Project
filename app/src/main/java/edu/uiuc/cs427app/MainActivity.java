@@ -24,7 +24,7 @@ import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -48,14 +48,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (String city : cities) {
             createCityLayout(city);
         }
-
-        Spinner spinner = (Spinner) findViewById(R.id.buttonSelectTheme);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.themes, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
     }
 
     // onClick handler for the MainActivity
@@ -75,22 +67,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("username", username);
         }
         startActivity(intent);
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View v, int position,
-                               long id) {
-        if(++check > 1) {
-            userProvider.selectTheme(position);
-            userProvider.updateTheme(userProvider, this);
-        }
-
-//
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        // TODO Auto-generated method stub
     }
 
     // Creates and formats horizontal linear layout to house the city text and "Show Details" button
