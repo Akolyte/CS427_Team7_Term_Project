@@ -56,7 +56,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    // Retrieves the city associated with this instace of the DetailsActivity
+    // Retrieves the city associated with this instance of the DetailsActivity
     // and removes it from the user's list of cities.
     // Redirects to the Main Activity when called.
     private void removeLocation() {
@@ -64,6 +64,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         userProvider.removeCity(city);
 
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("username",username);
         startActivity(intent);
     }
 }
