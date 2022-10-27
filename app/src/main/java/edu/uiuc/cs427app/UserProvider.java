@@ -47,10 +47,12 @@ public class UserProvider {
                 .commit();
     }
 
+    // Gets the number for theme, 0 for default theme
     public int getTheme(){
         return sharedPreferences.getInt(THEME, 0);
     }
 
+    // Change theme id in shared preferences
     public void selectTheme(int themeInt){
         sharedPreferences
                 .edit()
@@ -58,6 +60,7 @@ public class UserProvider {
                 .commit();
     }
 
+    // Restart the activity with new theme
     public void updateTheme(UserProvider userProvider, Activity activity){
         int themeID = userProvider.getTheme();
         activity.finish();
@@ -77,6 +80,7 @@ public class UserProvider {
         }
     }
 
+    // Invoked on creation of activity, initialize theme
     public void initializeTheme(UserProvider userProvider, Activity activity){
         int themeID = userProvider.getTheme();
         switch (themeID) {

@@ -16,31 +16,47 @@ import java.util.Map;
 
 public class Authenticator extends AbstractAccountAuthenticator{
     private final Context mContext;
-    private static Map<String, String> mCredentials = new HashMap<String, String>();
+    private static Map<String, String> mCredentials = new HashMap<>();
 
     public Authenticator(Context context) {
         super(context);
         mContext = context;
     }
 
+    // Methods from doc, not used so far
     @Override
-    public Bundle editProperties(AccountAuthenticatorResponse response, String accountType) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Bundle addAccount(AccountAuthenticatorResponse response, String accountType, String authTokenType, String[] requiredFeatures, Bundle options) throws NetworkErrorException {
+    public Bundle editProperties(AccountAuthenticatorResponse accountAuthenticatorResponse, String s) {
         return null;
     }
 
     @Override
-    public Bundle confirmCredentials(AccountAuthenticatorResponse response, Account account, Bundle options) throws NetworkErrorException {
+    public Bundle addAccount(AccountAuthenticatorResponse accountAuthenticatorResponse, String s, String s1, String[] strings, Bundle bundle) throws NetworkErrorException {
         return null;
     }
 
     @Override
-    public Bundle getAuthToken(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle options) {
-        throw new UnsupportedOperationException();
+    public Bundle confirmCredentials(AccountAuthenticatorResponse accountAuthenticatorResponse, Account account, Bundle bundle) throws NetworkErrorException {
+        return null;
+    }
+
+    @Override
+    public Bundle getAuthToken(AccountAuthenticatorResponse accountAuthenticatorResponse, Account account, String s, Bundle bundle) throws NetworkErrorException {
+        return null;
+    }
+
+    @Override
+    public String getAuthTokenLabel(String s) {
+        return null;
+    }
+
+    @Override
+    public Bundle updateCredentials(AccountAuthenticatorResponse accountAuthenticatorResponse, Account account, String s, Bundle bundle) throws NetworkErrorException {
+        return null;
+    }
+
+    @Override
+    public Bundle hasFeatures(AccountAuthenticatorResponse accountAuthenticatorResponse, Account account, String[] strings) throws NetworkErrorException {
+        return null;
     }
 
     /*
@@ -56,24 +72,5 @@ public class Authenticator extends AbstractAccountAuthenticator{
             authToken = dtf.format(LocalDateTime.now());
         }
         return authToken;
-    }
-
-    public void register(Account account, String password) {
-        mCredentials.put(account.name, password);
-    }
-
-    @Override
-    public String getAuthTokenLabel(String authTokenType) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Bundle updateCredentials(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle options) throws NetworkErrorException {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Bundle hasFeatures(AccountAuthenticatorResponse response, Account account, String[] features) throws NetworkErrorException {
-        throw new UnsupportedOperationException();
     }
 }
