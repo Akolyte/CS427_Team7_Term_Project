@@ -25,6 +25,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     Button login;
     Button register;
 
+    // Sets up the LoginActivity and necessary variables and listeners
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +59,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     * Attempt to log in with credentials
     * if success, start MainActivity
     * */
-    // TODO: Update UserProvider
     private void attemptLogin() {
         if (username.getText().toString().equals("") || password.getText().toString().equals("")) {
             // If the input is mal-formatted
@@ -80,7 +80,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             // if authenticated, set authToken and switch to main activity page
             Toast.makeText(LoginActivity.this, "Welcome back " + username.getText().toString(), Toast.LENGTH_SHORT).show();
             am.setAuthToken(account, "com.team7", authToken);
-            // TODO: retrieve info from account manager and apply to UserProvider
             Intent mainActivityIntent = new Intent(this, MainActivity.class);
             mainActivityIntent.putExtra("username",username.getText().toString());
             startActivity(mainActivityIntent);
@@ -91,7 +90,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     * if account exist, display error
     * else, create user and register to account manager
     * */
-    // TODO: acquire and store theme info in account manager
     private void attemptRegister() {
         if (username.getText().toString().equals("") || password.getText().toString().equals("")) {
             // If the input is mal-formatted
@@ -107,8 +105,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         // if account doesn't exist, create an account
         account = new Account(username.getText().toString(), "com.team7");
         am.addAccountExplicitly(account, password.getText().toString(), null);
-        // TODO: use account manager here
-        //  e.g. am.setUserData(account, "theme", "UIUC");
         Toast.makeText(LoginActivity.this, "Account registered " + username.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 
