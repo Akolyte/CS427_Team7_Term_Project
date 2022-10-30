@@ -38,12 +38,12 @@ public class ThemeSelectActivity extends AppCompatActivity implements View.OnCli
         spinner.setOnItemSelectedListener(this);
     }
 
-    // Moves to MainActivity when "Confirm" button is selected
+    // Moves to LoginActivity when "Confirm" button is selected
     @Override
     public void onClick(View view) {
-        Intent mainActivityIntent = new Intent(this, MainActivity.class);
-        mainActivityIntent.putExtra("username",username);
-        startActivity(mainActivityIntent);
+        Intent loginActivityIntent = new Intent(this, LoginActivity.class);
+        loginActivityIntent.putExtra("username",username);
+        startActivity(loginActivityIntent);
     }
 
     // When a theme is selected, updates the preferred theme for the user and displays new theme
