@@ -52,6 +52,7 @@ public class UserProvider {
         return sharedPreferences.getInt(THEME, 0);
     }
 
+
     // Assigns the given integer value as the preferred theme of the user
     public void selectTheme(int themeInt){
         sharedPreferences
@@ -79,7 +80,7 @@ public class UserProvider {
                 break;
         }
     }
-
+    
     // At the beginning of an activity, sets the theme based on the user's preference
     public void initializeTheme(UserProvider userProvider, Activity activity){
         int themeID = userProvider.getTheme();
