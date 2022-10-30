@@ -6,6 +6,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.content.Intent;
 import android.os.Bundle;
@@ -88,7 +89,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     /*
     * if account exist, display error
-    * else, create user and register to account manager
+    * else, create user and register to account manager and go to theme selection
     * */
     private void attemptRegister() {
         if (username.getText().toString().equals("") || password.getText().toString().equals("")) {
@@ -102,10 +103,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             return;
         }
 
-        // if account doesn't exist, create an account
+        // if account doesn't exist, create an account and go to ThemeSelectActivity
         account = new Account(username.getText().toString(), "com.team7");
         am.addAccountExplicitly(account, password.getText().toString(), null);
         Toast.makeText(LoginActivity.this, "Account registered " + username.getText().toString(), Toast.LENGTH_SHORT).show();
+        Intent themeIntent = new Intent(this, ThemeSelectActivity.class);
+        themeIntent.putExtra("username",username.getText().toString());
+        startActivity(themeIntent);
     }
 
     /*
