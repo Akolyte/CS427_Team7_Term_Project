@@ -11,6 +11,7 @@ public class AuthService extends Service{
         mAuthenticator = new Authenticator(getApplicationContext());
     }
 
+    // Implemented as instructed on Account Manager document. Not used for Milestone3
     @Override
     public IBinder onBind(Intent intent) {
         return mAuthenticator.getIBinder();
