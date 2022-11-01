@@ -45,13 +45,15 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     // Handles onclick events for the Details Activity
-    // Currently handles the  deleteLocationButton
-    // TODO: handle mapButton
+    // Handles the  deleteLocationButton and map button
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.deleteLocationButton:
                 removeLocation();
+                break;
+            case R.id.mapButton:
+                openMap();
                 break;
         }
     }
@@ -65,6 +67,12 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("username",username);
+        startActivity(intent);
+    }
+
+    // Opens the Map Activity
+    private void openMap() {
+        Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 }

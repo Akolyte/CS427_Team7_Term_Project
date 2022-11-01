@@ -57,6 +57,9 @@
         <activity
             android:name=".AddLocationActivity"
             android:exported="true" />
+        <activity
+            android:name=".MapActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
