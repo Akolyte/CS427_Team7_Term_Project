@@ -145,18 +145,22 @@ This week we discussed the progress that had been made on milestone 3. Chris and
 </br>
 Members present: List the NetID of the people who attended the meeting
 </br>
+</br>
 Meeting notes: Explain the overall team progress and a summary of discussion
+</br>
+</br>
+This week we finalized our submission of Milestone 3. We verified the completion of the different features that were assigned, and then went on to figure out how to submit propery. During the meeting we were able to successfuly determine how the video would be recorded, and fixed some bugs that were preventing our features from working as described in the requirements. Afterwords we agreed to convene ASAP once milestone 4 is released.
+</br>
 </br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
+| aa106         | Submission of Milestone 3  | N/A |
+| ruhangm2      | Login page and associated features completed  | N/A | 
+| mingzhi2      | Login page and associated features completed  | N/A |
+| hojinr2       | Submission of Milestone 3  | TBD until the next milestone is released |
+| kaili6        | Submission of Milestone 3  | N/A |
+| cjfisch2 | Submission of Milestone 3 | N/A |
+| hanhuis2 | Login page and associated features completed | N/A |
 </br>
 
 
