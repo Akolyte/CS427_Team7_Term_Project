@@ -41,7 +41,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     // Handles onclick events for the Details Activity
-    // Handles the  deleteLocationButton and map button
+    // Handles the deleteLocationButton
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
