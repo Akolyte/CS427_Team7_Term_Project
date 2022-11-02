@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ActivityMainBinding binding;
 
     private final String SHOW_DETAILS = "SHOW DETAILS";
+    private final String MAP_BUTTON_TEXT = "MAP";
+    private final String MAP_TAG = "M";
 
     private String username;
     private UserProvider userProvider;
@@ -60,6 +62,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("username", username);
         } else if (view.getId() == R.id.buttonSignOff) {
             intent = new Intent(this, LoginActivity.class);
+        } else if (view.getTag().toString().equals(MAP_TAG)) {
+            intent = new Intent(this, MapActivity.class);
+            intent.putExtra("username", username);
+            startActivity(intent);
         } else {
             String city = (String)view.getTag();
             intent = new Intent(this, DetailsActivity.class);
@@ -81,6 +87,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View spacer = new View(this);
         spacer.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 1));
         childLayout.addView(spacer);
+
+        Button mapButton = createMapButton();
+        childLayout.addView(mapButton);
 
         Button showDetailsButton = createShowDetailsButton(city);
         childLayout.addView(showDetailsButton);
@@ -112,6 +121,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 LinearLayout.LayoutParams.WRAP_CONTENT
         ));
         return text;
+    }
+
+    private Button createMapButton() {
+        Button mapButton = new MaterialButton(this);
+        mapButton.setText(MAP_BUTTON_TEXT);
+        mapButton.setOnClickListener(this);
+        mapButton.setTag(MAP_TAG);
+        mapButton.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+
+        return mapButton;
     }
 }
 
