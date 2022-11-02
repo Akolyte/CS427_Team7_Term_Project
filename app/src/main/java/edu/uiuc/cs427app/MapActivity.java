@@ -8,10 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MapActivity extends AppCompatActivity {
 
-//    private final String LATITUDE = "32.7767° N";
-//    private final String LONGITUDE = "96.7970° W";
+    private final String LATITUDE = "40.11036636617232";
+    private final String LONGITUDE = "-88.23136871411309";
     private UserProvider userProvider;
     private String username;
+    private String GOOGLE_MAPS_IFRAME_TEMPLATE = "<iframe src=\"https://maps.google.com/maps?q=%s,%s&t=&z=15&ie=UTF8&iwloc=&output=embed\"></iframe>";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,11 @@ public class MapActivity extends AppCompatActivity {
         map.getSettings().setDomStorageEnabled(true);
         map.setWebViewClient(new WebViewClient());
 
-        String html = "<iframe src=\"https://maps.google.com/maps?q=32.7767,96.7970&t=&z=15&ie=UTF8&iwloc=&output=embed\"></iframe>";
+        String html = buildGoogleMapsIframe();
         map.loadData(html, "text/html", null);
+    }
+
+    private String buildGoogleMapsIframe() {
+        return String.format(GOOGLE_MAPS_IFRAME_TEMPLATE, this.LATITUDE, this.LONGITUDE);
     }
 }
