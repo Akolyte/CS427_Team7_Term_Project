@@ -38,15 +38,10 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         welcomeMessage.setText(welcome);
         cityInfoMessage.setText(cityWeatherInfo);
         // Get the weather information from a Service that connects to a weather server and show the results
-
-        Button buttonMap = findViewById(R.id.mapButton);
-        buttonMap.setOnClickListener(this);
-
     }
 
     // Handles onclick events for the Details Activity
-    // Currently handles the  deleteLocationButton
-    // TODO: handle mapButton
+    // Handles the deleteLocationButton
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -64,7 +59,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         userProvider.removeCity(city);
 
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("username",username);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 }

@@ -14,21 +14,9 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
-        <TextView
-            android:id="@+id/welcomeText"
+        <WebView
+            android:id="@+id/mapWebView"
             android:layout_width="match_parent"
-            android:layout_height="58dp" />
-
-        <TextView
-            android:id="@+id/cityInfo"
-            android:layout_width="match_parent"
-            android:layout_height="268dp" />
-
-        <Button
-            android:id="@+id/deleteLocationButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:text="Delete Location" />
+            android:layout_height="731dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
