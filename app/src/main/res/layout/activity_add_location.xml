@@ -23,11 +23,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cityInput"
+            <fragment android:id="@+id/autocomplete_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                />
             <Button
                 android:id="@+id/submitNewLocation"
                 android:layout_width="match_parent"
