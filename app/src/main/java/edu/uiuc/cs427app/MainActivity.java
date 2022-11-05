@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
-    private final String SHOW_DETAILS = "SHOW DETAILS";
+    private final String SHOW_DETAILS = "WEATHER";
     private final String MAP_BUTTON_TEXT = "MAP";
     private final String MAP_TAG = "M";
 
