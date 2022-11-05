@@ -2,15 +2,28 @@ package edu.uiuc.cs427app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.common.api.Status;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+
+import java.util.Arrays;
 
 public class AddLocationActivity extends AppCompatActivity implements View.OnClickListener {
     private String username;
+    private String cityName;
     private UserProvider userProvider;
-
+    private AutocompleteSupportFragment autocompleteFragment;
+    private static final String TAG = AddLocationActivity.class.getSimpleName();
     // Sets up AddLocationActivity and constructs UserProvider
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +33,7 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
         userProvider.initializeTheme(userProvider, this);
         setContentView(R.layout.activity_add_location);
         setTitle(getString(R.string.app_name)+'-'+username);
+        initializeAutocompleteFragment();
     }
 
     // Handles onclick events associated with this Activity
@@ -36,12 +50,39 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
     // Retrieves city information from thew new city form and stores it
     // Returns to Main Activity when complete
     private void addLocation() {
-        TextView text = (TextView)findViewById(R.id.cityInput);
-        String newCity = text.getText().toString();
-        userProvider.addCity(newCity);
-
+        userProvider.addCity(cityName);
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("username",username);
         startActivity(intent);
     }
+
+    // Initialize an autocompleteFragment which can return city name predictions
+    // when user inputs a string
+    private void initializeAutocompleteFragment() {
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), getString(R.string.app_key));
+        }
+        // Initialize the AutocompleteSupportFragment.
+        autocompleteFragment = (AutocompleteSupportFragment) getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
+
+        // Specify the types of place data to return.
+        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG));
+
+
+        // Set up a PlaceSelectionListener to handle the response.
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(@NonNull Place place) {
+                // TODO: Get info about the selected place.
+                cityName = place.getName();
+                Log.i(TAG, "Place: " + place.getName() + ", " + place.getId());
+            }
+            @Override
+            public void onError(@NonNull Status status) {
+                // TODO: Handle the error.
+                Log.i(TAG, "An error occurred: " + status);
+            }
+        });
+    }
+
 }
