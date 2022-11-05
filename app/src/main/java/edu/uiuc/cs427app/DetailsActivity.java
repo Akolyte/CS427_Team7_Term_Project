@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,11 +15,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+import java.security.Security;
 import java.util.concurrent.ExecutionException;
+
+import org.json.*;
 
 
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener{
@@ -26,6 +33,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private String username;
     private UserProvider userProvider;
     TextView weatherText;
+    String key;
+    String j2;
+    String j1;
 
     // Initializes Details Activity with information about the weather in city
     // associated with this activity.
@@ -46,11 +56,13 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         // Initializing the GUI elements
         TextView welcomeMessage = findViewById(R.id.welcomeText);
-        TextView cityInfoMessage = findViewById(R.id.cityInfo);
+        //TextView cityInfoMessage = findViewById(R.id.cityInfo);
 
         welcomeMessage.setText(welcome);
-        cityInfoMessage.setText(cityWeatherInfo);
+        //cityInfoMessage.setText(cityWeatherInfo);
         weatherText = (TextView) findViewById(R.id.cityInfo);
+        readURL task = new readURL();
+        task.execute("https://dataservice.accuweather.com/locations/v1/cities/search?q="+cityName+"&apikey=58ccmwU7fOT14BhHzHx6HzOKtLeSNA6O");
         // Get the weather information from a Service that connects to a weather server and show the results
     }
 
@@ -76,7 +88,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         intent.putExtra("username", username);
         startActivity(intent);
 
-        readURL read = new readURL();
     }
 
     public class readURL extends AsyncTask<String, Void, String> {
@@ -109,33 +120,33 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         @Override
         protected void onPostExecute(String urlInfo) {
-            String key = "";
-            super.onPostExecute(urlInfo);
-                try {
+
+            try {
+                JSONArray keyArr = new JSONArray(urlInfo);
+                key=keyArr.getJSONObject(0).getString("Key");
+                try{
                     readURL weather = new readURL();
-                    String keyInfo = weather.execute("http://dataservice.accuweather.com/locations/v1/cities/search?q=Chicago&apikey=58ccmwU7fOT14BhHzHx6HzOKtLeSNA6O").get();
-
-                    JSONArray keyArr = new JSONArray(keyInfo);
-                    for (int i = 0; i<keyArr.length(); i++){
-                        JSONObject jsonPart = keyArr.getJSONObject(i);
-                        key = jsonPart.getString("Key");
-                    }
-
-                    String weatherInfo = weather.execute("http://apidev.accuweather.com/currentconditions/v1/"+ key + ".json?language=en&apikey=&apikey=58ccmwU7fOT14BhHzHx6HzOKtLeSNA6O").get();
-                    JSONArray weatherArray = new JSONArray(weatherInfo);
+                    j2 = weather.execute("https://dataservice.accuweather.com/currentconditions/v1/" + key + "?apikey=58ccmwU7fOT14BhHzHx6HzOKtLeSNA6O&language=en-us&details=true").get();
+                    JSONArray weatherArray = new JSONArray(j2);
                     for (int i = 0; i<weatherArray.length(); i++){
                         JSONObject weatherPart = weatherArray.getJSONObject(i);
-                        weatherText.setText(weatherPart.getString("WeatherText")+ " " + weatherPart.getString("Temperature"));
+                        weatherText.setText("Weather: "+weatherPart.getString("WeatherText")+ "\n"
+                                + "Temperature: "+weatherPart.getJSONObject("Temperature").getJSONObject("Imperial").getString("Value")+" F"+"\n"
+                                +"RelativeHumidity: "+weatherPart.getString("RelativeHumidity")+"\n"
+                                +"UVIndex: "+weatherPart.getString("UVIndexText"));
                     }
-
-                } catch (InterruptedException e) {
+                }catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
-                } catch (JSONException ex) {
-                    ex.printStackTrace();
+                }
+            }catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            super.onPostExecute(urlInfo);
+
         }
-    }
     }
 }
 
