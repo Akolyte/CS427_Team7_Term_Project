@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MapActivity extends AppCompatActivity {
 
-    private final String LATITUDE = "40.11036636617232";
-    private final String LONGITUDE = "-88.23136871411309";
     private UserProvider userProvider;
     private String username;
     private String GOOGLE_MAPS_IFRAME_TEMPLATE = "<iframe src=\"https://maps.google.com/maps?q=%s,%s&t=&z=15&ie=UTF8&iwloc=&output=embed\"></iframe>";
@@ -39,6 +37,13 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private String buildGoogleMapsIframe() {
-        return String.format(GOOGLE_MAPS_IFRAME_TEMPLATE, this.LATITUDE, this.LONGITUDE);
+        City city = getCity();
+        return String.format(GOOGLE_MAPS_IFRAME_TEMPLATE, city.getLatitude(), city.getLongitude());
+    }
+
+    private City getCity() {
+        String cityId = getIntent().getStringExtra("city").toString();
+        City city = userProvider.getCityById(cityId);
+        return city;
     }
 }

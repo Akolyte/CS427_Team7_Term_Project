@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,9 +30,13 @@ public class UserProvider {
     }
 
     // Adds a city to the set of cities associated with a user
-    public void addCity(String city) {
+    public void addCity(City city) {
         Set<String> cities = getCities();
-        cities.add(city);
+        cities.add(city.getCityId());
+        sharedPreferences
+                .edit()
+                .putString(city.getCityId(), new Gson().toJson(city))
+                .commit();
         sharedPreferences
                 .edit()
                 .putStringSet(CITIES, cities)
@@ -96,6 +102,16 @@ public class UserProvider {
                 activity.setTheme(R.style.Theme_LSU);
                 break;
         }
+    }
+
+    public City getCityById(String cityId) {
+        Gson gson = new Gson();
+        String cityObj = sharedPreferences.getString(cityId, "");
+        if (cityObj == null || cityObj.equals("")) {
+            cityObj = "{\"cityId\":\"ChIJOwg_06VPwokRYv534QaPC8g\",\"cityName\":\"New York\",\"latitude\":40.7127753,\"longitude\":-74.0059728}";
+        }
+        City city = gson.fromJson(cityObj, City.class);
+        return city;
     }
 
 }

@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +18,7 @@ import java.util.Arrays;
 
 public class AddLocationActivity extends AppCompatActivity implements View.OnClickListener {
     private String username;
-    private String cityName;
+    private City city;
     private UserProvider userProvider;
     private AutocompleteSupportFragment autocompleteFragment;
     private static final String TAG = AddLocationActivity.class.getSimpleName();
@@ -50,7 +48,7 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
     // Retrieves city information from thew new city form and stores it
     // Returns to Main Activity when complete
     private void addLocation() {
-        userProvider.addCity(cityName);
+        userProvider.addCity(city);
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("username",username);
         startActivity(intent);
@@ -74,7 +72,7 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onPlaceSelected(@NonNull Place place) {
                 // TODO: Get info about the selected place.
-                cityName = place.getName();
+                city = new City(place.getId(), place.getName(), place.getLatLng().latitude, place.getLatLng().longitude);
                 Log.i(TAG, "Place: " + place.getName() + ", " + place.getId());
             }
             @Override

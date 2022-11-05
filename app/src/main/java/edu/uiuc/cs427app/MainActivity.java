@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private final String SHOW_DETAILS = "SHOW DETAILS";
     private final String MAP_BUTTON_TEXT = "MAP";
-    private final String MAP_TAG = "M";
 
     private String username;
     private UserProvider userProvider;
@@ -62,13 +61,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("username", username);
         } else if (view.getId() == R.id.buttonSignOff) {
             intent = new Intent(this, LoginActivity.class);
-        } else if (view.getTag().toString().equals(MAP_TAG)) {
-            intent = new Intent(this, MapActivity.class);
-            intent.putExtra("username", username);
-            startActivity(intent);
         } else {
+            String bt = ((TextView)view).getText().toString();
             String city = (String)view.getTag();
-            intent = new Intent(this, DetailsActivity.class);
+            if (bt.equals(SHOW_DETAILS)) {
+                intent = new Intent(this, DetailsActivity.class);
+            } else {
+                intent = new Intent(this, MapActivity.class);
+            }
             intent.putExtra("city", city);
             intent.putExtra("username", username);
         }
@@ -81,14 +81,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         childLayout.setOrientation(LinearLayout.HORIZONTAL);
         childLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        TextView text = createCityTextView(city);
+        TextView text = createCityTextView(userProvider.getCityById(city).getCityName());
         childLayout.addView(text);
 
         View spacer = new View(this);
         spacer.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 1));
         childLayout.addView(spacer);
 
-        Button mapButton = createMapButton();
+        Button mapButton = createMapButton(city);
         childLayout.addView(mapButton);
 
         Button showDetailsButton = createShowDetailsButton(city);
@@ -123,11 +123,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return text;
     }
 
-    private Button createMapButton() {
+    private Button createMapButton(String city) {
         Button mapButton = new MaterialButton(this);
         mapButton.setText(MAP_BUTTON_TEXT);
         mapButton.setOnClickListener(this);
-        mapButton.setTag(MAP_TAG);
+        mapButton.setTag(city);
         mapButton.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
