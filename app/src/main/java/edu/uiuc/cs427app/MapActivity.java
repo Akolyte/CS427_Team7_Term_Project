@@ -1,16 +1,23 @@
 package edu.uiuc.cs427app;
 
+import androidx.fragment.app.FragmentActivity;
+
 import android.os.Bundle;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import edu.uiuc.cs427app.databinding.ActivityMapBinding;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private GoogleMap mMap;
+    private ActivityMapBinding binding;
     private UserProvider userProvider;
     private String username;
-    private String GOOGLE_MAPS_IFRAME_TEMPLATE = "<iframe src=\"https://maps.google.com/maps?q=%s,%s&t=&z=15&ie=UTF8&iwloc=&output=embed\"></iframe>";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,32 +25,35 @@ public class MapActivity extends AppCompatActivity {
         username = getIntent().getStringExtra("username");
         userProvider = new UserProvider(this, username);
         userProvider.initializeTheme(userProvider, this);
-        setContentView(R.layout.activity_map);
+        binding = ActivityMapBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-
-        initializeMapWebView();
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
-    private void initializeMapWebView() {
-        WebView map = (WebView) findViewById(R.id.mapWebView);
-        map.getSettings().setJavaScriptEnabled(true);
-        map.getSettings().setBuiltInZoomControls(true);
-        map.getSettings().setDisplayZoomControls(false);
-        map.getSettings().setDomStorageEnabled(true);
-        map.setWebViewClient(new WebViewClient());
-
-        String html = buildGoogleMapsIframe();
-        map.loadData(html, "text/html", null);
-    }
-
-    private String buildGoogleMapsIframe() {
-        City city = getCity();
-        return String.format(GOOGLE_MAPS_IFRAME_TEMPLATE, city.getLatitude(), city.getLongitude());
-    }
-
-    private City getCity() {
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
         String cityId = getIntent().getStringExtra("city").toString();
         City city = userProvider.getCityById(cityId);
-        return city;
+
+        mMap = googleMap;
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        // Add a marker in Sydney and move the camera
+//        LatLng sydney = new LatLng(50, 50);
+        LatLng latLng = new LatLng(city.getLatitude(), city.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(latLng).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
     }
 }
