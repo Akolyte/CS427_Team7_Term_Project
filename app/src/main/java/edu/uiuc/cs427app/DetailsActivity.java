@@ -18,7 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
-public class DetailsActivity extends AppCompatActivity implements View.OnClickListener{
+public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String username;
     private UserProvider userProvider;
@@ -36,7 +36,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         userProvider = new UserProvider(this, username);
         userProvider.initializeTheme(userProvider, this);
         setContentView(R.layout.activity_details);
-        setTitle(getString(R.string.app_name)+'-'+username);
+        setTitle(getString(R.string.app_name) + '-' + username);
 
         // Process the Intent payload that has opened this Activity and show the information accordingly
         String cityName = getIntent().getStringExtra("city").toString();
@@ -49,7 +49,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         // Fetches weather information from AccuWeather API
         readURL task = new readURL();
-        task.execute("https://dataservice.accuweather.com/locations/v1/cities/search?q="+cityName+"&apikey=58ccmwU7fOT14BhHzHx6HzOKtLeSNA6O");
+        task.execute("https://dataservice.accuweather.com/locations/v1/cities/search?q=" + cityName + "&apikey=58ccmwU7fOT14BhHzHx6HzOKtLeSNA6O");
     }
 
     // Handles onclick events for the Details Activity
@@ -97,8 +97,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                     info = inputReader.read();
                 }
                 return data;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 return "URL READ FAILED";
 
@@ -112,26 +111,23 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             try {
                 // API call to get key from city name
                 JSONArray keyArr = new JSONArray(urlInfo);
-                key=keyArr.getJSONObject(0).getString("Key");
-
+                key = keyArr.getJSONObject(0).getString("Key");
                 // API call to get weather from key
-                try{
+                try {
                     readURL weather = new readURL();
                     j2 = weather.execute("https://dataservice.accuweather.com/currentconditions/v1/" + key + "?apikey=58ccmwU7fOT14BhHzHx6HzOKtLeSNA6O&language=en-us&details=true").get();
                     JSONArray weatherArray = new JSONArray(j2);
-                    for (int i = 0; i<weatherArray.length(); i++){
-                        JSONObject weatherPart = weatherArray.getJSONObject(i);
-                        weatherText.setText("Weather: "+weatherPart.getString("WeatherText")+ "\n"
-                                + "Temperature: "+weatherPart.getJSONObject("Temperature").getJSONObject("Imperial").getString("Value")+" F"+"\n"
-                                +"Humidity: "+weatherPart.getString("RelativeHumidity")+"\n"
-                                +"Wind Speed: "+weatherPart.getJSONObject("Wind").getJSONObject("Speed").getJSONObject("Imperial").getString("Value") + " mph");
-                    }
-                }catch (InterruptedException e) {
+                    JSONObject weatherPart = weatherArray.getJSONObject(0);
+                    weatherText.setText("Weather: " + weatherPart.getString("WeatherText") + "\n"
+                            + "Temperature: " + weatherPart.getJSONObject("Temperature").getJSONObject("Imperial").getString("Value") + " F" + "\n"
+                            + "Humidity: " + weatherPart.getString("RelativeHumidity") + "\n"
+                            + "Wind Speed: " + weatherPart.getJSONObject("Wind").getJSONObject("Speed").getJSONObject("Imperial").getString("Value") + " mph");
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
-            }catch (JSONException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             super.onPostExecute(urlInfo);
