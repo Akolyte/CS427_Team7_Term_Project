@@ -62,9 +62,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (view.getId() == R.id.buttonSignOff) {
             intent = new Intent(this, LoginActivity.class);
         } else {
-            String bt = ((TextView)view).getText().toString();
+            String buttonText = ((TextView)view).getText().toString();
             String city = (String)view.getTag();
-            if (bt.equals(SHOW_DETAILS)) {
+            if (buttonText.equals(SHOW_DETAILS)) {
                 intent = new Intent(this, DetailsActivity.class);
             } else {
                 intent = new Intent(this, MapActivity.class);

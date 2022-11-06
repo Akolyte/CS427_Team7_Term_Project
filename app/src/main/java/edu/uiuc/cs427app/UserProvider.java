@@ -107,9 +107,6 @@ public class UserProvider {
     public City getCityById(String cityId) {
         Gson gson = new Gson();
         String cityObj = sharedPreferences.getString(cityId, "");
-        if (cityObj == null || cityObj.equals("")) {
-            cityObj = "{\"cityId\":\"ChIJOwg_06VPwokRYv534QaPC8g\",\"cityName\":\"New York\",\"latitude\":40.7127753,\"longitude\":-74.0059728}";
-        }
         City city = gson.fromJson(cityObj, City.class);
         return city;
     }
