@@ -168,18 +168,22 @@ This week we finalized our submission of Milestone 3. We verified the completion
 </br>
 Members present: List the NetID of the people who attended the meeting
 </br>
+</br>
 Meeting notes: Explain the overall team progress and a summary of discussion
+</br>
+</br>
+This week we reviewed our development on Milestone 4. After verifying the app was ready for submission, we doled out tasks related to said submission to the two role team members. (Hojin and Ruhang) We then set aside some time to fill out the Peer Review so no one misses out on the points, and reminded people about the deadline for the Book Report. We also discussed some different problems with our implementation and whether they would need to be solved or not to pass this Milestone 4.
+</br>
 </br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
+| aa106         | Designed Weather API call and finalized it | N/A |
+| ruhangm2      | N/A | Check Map Class for comments + Submission | 
+| mingzhi2      | Added autocomplete fragment to establish city name | N/A |
+| hojinr2       | N/A | Check Weather Class for comments + Record Video of application |
+| kaili6        | Added Map class functionality and cleaned up code | N/A |
+| cjfisch2 | Created/Refactored Componenents and cleaned up comments | N/A |
+| hanhuis2 | Worked on Weather component and API Call | N/A |
 </br>
 
 
