@@ -32,5 +32,12 @@
             android:layout_height="wrap_content"
             android:onClick="onClick"
             android:text="Delete Location" />
+
+        <Button
+            android:id="@+id/navigateMainMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="MAIN MENU" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

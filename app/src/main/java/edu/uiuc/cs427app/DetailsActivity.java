@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,13 +58,18 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     // Handles onclick events for the Details Activity
     // Handles the deleteLocationButton
+    // Handles the navigateMainMenu Button
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.deleteLocationButton:
                 removeLocation();
                 break;
+            case R.id.navigateMainMenu:
+                mainMenu();
+                break;
         }
+
     }
 
     // Retrieves the city associated with this instance of the DetailsActivity
@@ -76,6 +83,13 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         intent.putExtra("username", username);
         startActivity(intent);
 
+    }
+
+    // Allows the app to navigate back to the Main Activity menu
+    private void mainMenu() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
     }
 
     // Creates a task to read from a URL, specifically the Accuweather API call
