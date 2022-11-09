@@ -20,6 +20,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private UserProvider userProvider;
     private String username;
 
+    // Overrides onCreate method of FragmentActivity to deal with the classes from the application
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

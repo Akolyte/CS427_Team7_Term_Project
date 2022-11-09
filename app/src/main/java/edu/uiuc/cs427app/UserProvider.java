@@ -104,6 +104,7 @@ public class UserProvider {
         }
     }
 
+    // Gets City by ID
     public City getCityById(String cityId) {
         Gson gson = new Gson();
         String cityObj = sharedPreferences.getString(cityId, "");

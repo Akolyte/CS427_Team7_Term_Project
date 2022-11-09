@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return text;
     }
 
+    // Creates button for application
     private Button createMapButton(String city) {
         Button mapButton = new MaterialButton(this);
         mapButton.setText(MAP_BUTTON_TEXT);

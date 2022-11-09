@@ -24,6 +24,7 @@ public class Authenticator extends AbstractAccountAuthenticator{
     }
 
     // Methods from doc, not used so far
+    // from here
     @Override
     public Bundle editProperties(AccountAuthenticatorResponse accountAuthenticatorResponse, String s) {
         return null;
@@ -58,6 +59,7 @@ public class Authenticator extends AbstractAccountAuthenticator{
     public Bundle hasFeatures(AccountAuthenticatorResponse accountAuthenticatorResponse, Account account, String[] strings) throws NetworkErrorException {
         return null;
     }
+    // to here
 
     /*
     * This function checks if the username and password matches
