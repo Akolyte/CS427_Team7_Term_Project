@@ -2,6 +2,8 @@ package edu.uiuc.cs427app;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+
+// Class used for creating authenticator instance
 public class AuthService extends Service{
     private Authenticator mAuthenticator;
 

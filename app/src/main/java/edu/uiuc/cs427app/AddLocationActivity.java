@@ -16,6 +16,7 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 
 import java.util.Arrays;
 
+// Activity class used for location searching and adding
 public class AddLocationActivity extends AppCompatActivity implements View.OnClickListener {
     private String username;
     private City city;
@@ -69,12 +70,14 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
 
         // Set up a PlaceSelectionListener to handle the response.
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            // Create city instance upon selection
             @Override
             public void onPlaceSelected(@NonNull Place place) {
                 // TODO: Get info about the selected place.
                 city = new City(place.getId(), place.getName(), place.getLatLng().latitude, place.getLatLng().longitude);
                 Log.i(TAG, "Place: " + place.getName() + ", " + place.getId());
             }
+            // Error handler for place selection
             @Override
             public void onError(@NonNull Status status) {
                 // TODO: Handle the error.
