@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-
+// Class for authentication when user logs in
 public class Authenticator extends AbstractAccountAuthenticator{
     private final Context mContext;
     private static Map<String, String> mCredentials = new HashMap<>();

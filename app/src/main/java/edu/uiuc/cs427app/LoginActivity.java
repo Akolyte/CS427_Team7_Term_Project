@@ -57,10 +57,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    /*
+    /**
     * Attempt to log in with credentials
     * if success, start MainActivity
-    * */
+    **/
     private void attemptLogin() {
         if (username.getText().toString().equals("") || password.getText().toString().equals("")) {
             // If the input is mal-formatted
@@ -88,10 +88,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    /*
+    /**
     * if account exist, display error
     * else, create user and register to account manager and go to theme selection
-    * */
+    **/
     private void attemptRegister() {
         if (username.getText().toString().equals("") || password.getText().toString().equals("")) {
             // If the input is mal-formatted
@@ -113,10 +113,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         startActivity(themeIntent);
     }
 
-    /*
+    /**
     * Find account by username
     * if no match, return null
-    * */
+    **/
     private Account findAccountByUsername(EditText username) {
         Account[] accounts = am.getAccountsByType("com.team7");
         for(Account account: accounts) {

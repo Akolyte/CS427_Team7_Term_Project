@@ -16,6 +16,7 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 
 import java.util.Arrays;
 
+// Activity class used for location searching and adding
 public class AddLocationActivity extends AppCompatActivity implements View.OnClickListener {
     private String username;
     private City city;
