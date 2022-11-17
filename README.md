@@ -195,14 +195,13 @@ Meeting notes: Explain the overall team progress and a summary of discussion
 </br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
+| aa106         | N/A | Testing adding a new city |
+| ruhangm2      | Check Map Class for comments + Submission | testing user sign up | 
+| mingzhi2      | Added autocomplete fragment to establish city name | testing user log in  |
+| hojinr2       | Check Weather Class for comments + Record Video of application | testing removing a city |
+| kaili6        | Added Map class functionality and cleaned up code | Testing Location Feature |
+| cjfisch2 | Created/Refactored Componenents and cleaned up comments |  Testing Weather Feature |
+| hanhuis2 | Worked on Weather component and API Call | testing user log off |
 </br>
 
 
