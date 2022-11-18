@@ -191,7 +191,12 @@ This week we reviewed our development on Milestone 4. After verifying the app wa
 </br>
 Members present: List the NetID of the people who attended the meeting
 </br>
+</br>
 Meeting notes: Explain the overall team progress and a summary of discussion
+</br>
+</br>
+This week we discussed the new Milestone 5 requirements and extra credit. Tasks were assigned accordingly, and any issues will be discussed in the next meeting.
+</br>
 </br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
