@@ -214,18 +214,22 @@ This week we discussed the new Milestone 5 requirements and extra credit. Tasks 
 </br>
 Members present: List the NetID of the people who attended the meeting
 </br>
+</br>
 Meeting notes: Explain the overall team progress and a summary of discussion
+</br>
+</br>
+This week we discussed our progress for Milestone 5. We then decided who would implement the bonus tasks, and discussed what would be needed to complete the initial task of adding the instrumenred tests.
+</br>
 </br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
+| aa106         | Testing adding a new city | N/A |
+| ruhangm2      | testing user sign up | N/A |
+| mingzhi2      | testing user log in  | N/A |
+| hojinr2       | testing removing a city | Implementing Code Coverage |
+| kaili6        | Testing Location Feature | N/A |
+| cjfisch2      |Testing Weather Feature | Implementing Test Mocking |
+| hanhuis2      | testing user log off | N/A |
 </br>
 
 
