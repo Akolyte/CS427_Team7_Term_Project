@@ -49,6 +49,11 @@ public class LogInInstrumentedTest {
         onView(withText("Welcome back " + TEST_USER))
                 .inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
+        Thread.sleep(SLEEP_TIME);
+        onView(withId(R.id.textView4)).check(matches(withText("List of Locations")));  //Check if it is at main activity
+        onView(withId(R.id.buttonSignOff)).perform(click());  // click sign off
+        Thread.sleep(SLEEP_TIME);
+        onView(withId(R.id.buttonLogin)).check(matches(withText("Login"))); // Check if it returns to login activity
     }
 
     @Test
