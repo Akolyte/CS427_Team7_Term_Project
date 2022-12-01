@@ -6,8 +6,11 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import static org.hamcrest.CoreMatchers.containsString;
+
 import android.content.Context;
 import android.content.Intent;
+import android.widget.TextView;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -57,6 +60,18 @@ public class WeatherInstrumentedTest {
         provider.addCity(mockCity);
     }
 
+    private void assertWeatherInformationIsPopulated() {
+        onView(withId(R.id.cityInfo)).check(matches(withText(containsString("Weather:"))));
+        onView(withId(R.id.cityInfo)).check(matches(withText(containsString("Temperature:"))));
+        onView(withId(R.id.cityInfo)).check(matches(withText(containsString("Humidity:"))));
+        onView(withId(R.id.cityInfo)).check(matches(withText(containsString("Wind Speed:"))));
+    }
+
+    private void assertWelcomeText(String city) {
+        String textToMatch = "Welcome to " + city;
+        onView(withId(R.id.welcomeText)).check(matches(withText(textToMatch)));
+    }
+
     @Before
     public void cleanup() {
         removeCityFromUserProvider(BOSTON);
@@ -78,7 +93,8 @@ public class WeatherInstrumentedTest {
         onView(withText("WEATHER")).perform(click());
         Thread.sleep(SLEEP_TIME);
 
-        onView(withId(R.id.welcomeText)).check(matches(withText("Welcome to Boston")));
+        assertWelcomeText(BOSTON);
+        assertWeatherInformationIsPopulated();
     }
 
     @Test
@@ -91,7 +107,8 @@ public class WeatherInstrumentedTest {
         onView(withText("WEATHER")).perform(click());
         Thread.sleep(SLEEP_TIME);
 
-        onView(withId(R.id.welcomeText)).check(matches(withText("Welcome to Orlando")));
+        assertWelcomeText(ORLANDO);
+        assertWeatherInformationIsPopulated();
     }
 
     @Test
@@ -105,6 +122,7 @@ public class WeatherInstrumentedTest {
         onView(withText("WEATHER")).perform(click());
         Thread.sleep(SLEEP_TIME);
 
-        onView(withId(R.id.welcomeText)).check(matches(withText("Welcome to Boston")));
+        assertWelcomeText(BOSTON);
+        assertWeatherInformationIsPopulated();
     }
 }
