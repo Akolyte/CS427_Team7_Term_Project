@@ -16,12 +16,15 @@ import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 public class WeatherInstrumentedTest {
     private String TEST_USER = "chris";
+    private String BOSTON = "Boston";
+    private String ORLANDO = "Orlando";
     private int SLEEP_TIME = 3000;
 
     private Intent initializeIntent(String city) {
@@ -46,11 +49,16 @@ public class WeatherInstrumentedTest {
         provider.removeCity(city);
     }
 
+    @Before
+    public void cleanup() {
+        removeCityFromUserProvider(BOSTON);
+        removeCityFromUserProvider(ORLANDO);
+    }
 
     @Test
     public void BostonWeatherTest() throws Exception {
-        initializeUserProvider("Boston");
-        Intent intent = initializeIntent("Boston");
+        initializeUserProvider(BOSTON);
+        Intent intent = initializeIntent(BOSTON);
 
         ActivityScenario.launch(intent);
         Thread.sleep(SLEEP_TIME);
@@ -58,13 +66,12 @@ public class WeatherInstrumentedTest {
         Thread.sleep(SLEEP_TIME);
 
         onView(withId(R.id.welcomeText)).check(matches(withText("Welcome to Boston")));
-        removeCityFromUserProvider("Boston");
     }
 
     @Test
     public void OrlandoWeatherTest() throws Exception{
-        initializeUserProvider("Orlando");
-        Intent intent = initializeIntent("Orlando");
+        initializeUserProvider(ORLANDO);
+        Intent intent = initializeIntent(ORLANDO);
 
         ActivityScenario.launch(intent);
         Thread.sleep(SLEEP_TIME);
@@ -72,27 +79,5 @@ public class WeatherInstrumentedTest {
         Thread.sleep(SLEEP_TIME);
 
         onView(withId(R.id.welcomeText)).check(matches(withText("Welcome to Orlando")));
-        removeCityFromUserProvider("Orlando");
-
     }
-
-//    @Test
-//    public void BostonWeatherTest() throws Exception {
-//       Intent detailIntent = initializeIntent("Boston", "Chris");
-//       initializeUserProvider("Boston", "Chris");
-//       ActivityScenario.launch(detailIntent);
-//       Thread.sleep(1000);
-//
-//       onView(withId(R.id.welcomeText)).check(matches(withText("Welcome to Boston")));
-//    }
-
-//    @Test
-//    public void OrlandoWeatherTest() throws Exception{
-//        Intent detailIntent = initializeIntent("Orlando", "Chris");
-//        initializeUserProvider("Orlando", "Chris");
-//        ActivityScenario.launch(detailIntent);
-//        Thread.sleep(1000);
-//
-//        onView(withId(R.id.welcomeText)).check(matches(withText("Welcome to Orlando")));
-//    }
 }
