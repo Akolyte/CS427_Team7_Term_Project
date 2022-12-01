@@ -12,6 +12,7 @@ import static androidx.test.ext.truth.content.IntentSubject.assertThat;
 
 import static org.hamcrest.Matchers.not;
 
+import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
@@ -22,6 +23,10 @@ import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
+import android.accounts.Account;
+import android.accounts.AccountManager;
+
+import org.junit.Before;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -36,6 +41,14 @@ public class LogInInstrumentedTest {
     @Rule
     public ActivityTestRule<LoginActivity> mActivityRule =
             new ActivityTestRule<>(LoginActivity.class);
+    @Before
+    public void CreateTestAccount() {
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        AccountManager am = AccountManager.get(appContext);
+        Account account = new Account(TEST_USER, "com.team7");
+        am.addAccountExplicitly(account, TEST_PASSWORD, null);
+    }
+
 
     @Test
     public void LogInTest1() throws Exception{
