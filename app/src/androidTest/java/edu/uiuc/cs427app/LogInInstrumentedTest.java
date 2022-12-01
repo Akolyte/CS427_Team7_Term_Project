@@ -26,6 +26,7 @@ import androidx.test.rule.ActivityTestRule;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 
+import org.junit.After;
 import org.junit.Before;
 
 import org.junit.Rule;
@@ -37,16 +38,19 @@ public class LogInInstrumentedTest {
     private String TEST_USER = "Adam";
     private String TEST_PASSWORD = "123456";
     private int SLEEP_TIME = 1000;
-
+    Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+    AccountManager am = AccountManager.get(appContext);
+    Account account = new Account(TEST_USER, "com.team7");
     @Rule
     public ActivityTestRule<LoginActivity> mActivityRule =
             new ActivityTestRule<>(LoginActivity.class);
     @Before
     public void CreateTestAccount() {
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        AccountManager am = AccountManager.get(appContext);
-        Account account = new Account(TEST_USER, "com.team7");
         am.addAccountExplicitly(account, TEST_PASSWORD, null);
+    }
+    @After
+    public void CleanUserAfter() {
+        am.removeAccountExplicitly(account);
     }
 
 
