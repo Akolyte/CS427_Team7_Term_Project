@@ -41,11 +41,10 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         setTitle(getString(R.string.app_name) + '-' + username);
 
         // Process the Intent payload that has opened this Activity and show the information accordingly
-        String cityId = getIntent().getStringExtra("city").toString();
+        String cityId = getIntent().getStringExtra("city");
         String cityName = userProvider.getCityById(cityId).getCityName();
         String welcome = "Welcome to "+ cityName;
-        String cityWeatherInfo = "Detailed information about the weather of "+cityName;
-        
+
         // Initializing the GUI elements
         TextView welcomeMessage = findViewById(R.id.welcomeText);
         welcomeMessage.setText(welcome);
