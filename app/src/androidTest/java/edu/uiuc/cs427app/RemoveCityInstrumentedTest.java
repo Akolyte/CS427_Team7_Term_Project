@@ -47,14 +47,23 @@ public class RemoveCityInstrumentedTest {
     }
 
     @Test
-    public void removeChampaign() throws Exception {
+    public void isCityAdded() throws Exception {
+        initializeUserProvider("Champaign");
+        Intent intent = initializeIntent("Champaign");
+        ActivityScenario.launch(intent);
+        Thread.sleep(SLEEP_TIME);
+        assertTrue(!getCitiesFromUserProvider().isEmpty());
+        onView(withId(R.id.deleteLocationButton)).perform(click());
+    }
+
+    @Test
+    public void isCityRemoved() throws Exception {
         initializeUserProvider("Champaign");
         Intent intent = initializeIntent("Champaign");
         ActivityScenario.launch(intent);
         Thread.sleep(SLEEP_TIME);
         onView(withId(R.id.deleteLocationButton)).perform(click());
         Thread.sleep(SLEEP_TIME);
-        // Assert that user has no cities
         assertTrue(getCitiesFromUserProvider().isEmpty());
     }
 }
