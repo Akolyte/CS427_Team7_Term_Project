@@ -10,6 +10,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class CityProxy {
     private Context ctx;
@@ -42,6 +43,8 @@ public class CityProxy {
     }
 
     private City buildCity(String location, LatLng latLng) {
-        return new City("0", location, latLng.latitude, latLng.longitude);
+        UUID uuid = UUID.randomUUID();
+        String uuidAsString = uuid.toString();
+        return new City(uuidAsString, location, latLng.latitude, latLng.longitude);
     }
 }
