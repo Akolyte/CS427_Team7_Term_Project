@@ -41,28 +41,26 @@ public class UserSignupTest {
     Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
     AccountManager am = AccountManager.get(appContext);
 
-    private String USER1 = "ruhangm2";
-    private String PWD1 = "123456";
+    private final String USER1 = "ruhangm2";
+    private final String PWD1 = "123456";
     Account account = new Account(USER1, "com.team7");
     private final int SLEEP_TIME = 1000;
+
+    @Before
+    public void CleanUserBefore() {
+        am.removeAccountExplicitly(account);
+    }
 
     @After
     public void CleanUserAfter() {
         am.removeAccountExplicitly(account);
     }
 
-    /**
-    * Test 2 cases:
-     * 1. Normal signup
-     * 2. After normal signup, signup the same account twice
-    * */
+    // Normal sign up
     @Test
-    public void NormalAndExistSignupTest() throws InterruptedException {
-        // Normal Signup
+    public void NormalSignupTest() throws InterruptedException {
         onView(withId(R.id.userName)).perform(click()).perform(typeText(USER1));
         onView(withId(R.id.userPassword)).perform(click()).perform(typeText(PWD1));
-        Thread.sleep(SLEEP_TIME);
-
         onView(withId(R.id.buttonRegister)).perform(click());
         onView(withText("Account registered " + USER1))
                 .inRoot(withDecorView(not(activityRule.getActivity().getWindow().getDecorView())))
@@ -71,8 +69,13 @@ public class UserSignupTest {
         Thread.sleep(SLEEP_TIME);
         onView(withId(R.id.buttonConfirm)).perform(click());
         Thread.sleep(SLEEP_TIME);
+    }
 
-        // Signup same username twice
+    // Sign up the same username twice
+    @Test
+    public void ExistedSignupTest() throws InterruptedException {
+        am.addAccountExplicitly(account, PWD1, null);
+
         onView(withId(R.id.userName)).perform(click()).perform(typeText(USER1));
         onView(withId(R.id.userPassword)).perform(click()).perform(typeText(PWD1));
         Thread.sleep(SLEEP_TIME);
