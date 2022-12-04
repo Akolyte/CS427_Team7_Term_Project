@@ -4,6 +4,8 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.intent.Intents.intended;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -15,6 +17,7 @@ import android.accounts.AccountManager;
 import android.content.Context;
 import android.view.View;
 
+import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
@@ -47,28 +50,46 @@ public class UserSignupTest {
     private final int SLEEP_TIME = 1000;
 
     @Before
-    public void CleanUserBefore() {
+    public void Setup() {
         am.removeAccountExplicitly(account);
+        Intents.init();
     }
 
     @After
-    public void CleanUserAfter() {
+    public void Teardown() {
         am.removeAccountExplicitly(account);
+        Intents.release();
+    }
+
+    // Test if an account exist in type "com.team7" by username
+    private boolean CheckUserExist(String username) {
+        Account[] accounts = am.getAccountsByType("com.team7");
+        boolean found = false;
+        for(Account account: accounts) {
+            if(account.name.equals(USER1)) {
+                found = true;
+            }
+        }
+        return found;
     }
 
     // Normal sign up
     @Test
     public void NormalSignupTest() throws InterruptedException {
+        boolean exist = CheckUserExist(USER1);
+        assertEquals(exist, false);
+
         onView(withId(R.id.userName)).perform(click()).perform(typeText(USER1));
         onView(withId(R.id.userPassword)).perform(click()).perform(typeText(PWD1));
         onView(withId(R.id.buttonRegister)).perform(click());
-        onView(withText("Account registered " + USER1))
-                .inRoot(withDecorView(not(activityRule.getActivity().getWindow().getDecorView())))
-                .check(matches(isDisplayed()));
+        Thread.sleep(SLEEP_TIME);
 
-        Thread.sleep(SLEEP_TIME);
+        // check if theme select activity is displayed
         onView(withId(R.id.buttonConfirm)).perform(click());
-        Thread.sleep(SLEEP_TIME);
+        intended(hasComponent(ThemeSelectActivity.class.getName()));
+
+        exist = CheckUserExist(USER1);
+        assertEquals(exist, true);
     }
 
     // Sign up the same username twice
