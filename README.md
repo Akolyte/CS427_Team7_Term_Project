@@ -239,6 +239,9 @@ Members present: List the NetID of the people who attended the meeting
 </br>
 Meeting notes: Explain the overall team progress and a summary of discussion
 </br>
+</br>
+This week we discussed our progress for Milestone 5. After verifying that everyone had completed their work, we decided who would submit the materials needed to submit for Milestone 5. 
+</br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
 | aa106          | Testing adding a new city       | N/A |
