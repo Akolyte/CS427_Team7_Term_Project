@@ -70,14 +70,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
         Account account = findAccountByUsername(username);
         if (account == null) {
-            Toast.makeText(LoginActivity.this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, getString(R.string.login_error), Toast.LENGTH_SHORT).show();
             return;
         }
 
         // if account exists, attempt to log in
         String authToken = au.logIn(account, password.getText().toString());
         if (authToken == null) {
-            Toast.makeText(LoginActivity.this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, getString(R.string.login_error), Toast.LENGTH_SHORT).show();
         } else {
             // if authenticated, set authToken and switch to main activity page
             Toast.makeText(LoginActivity.this, "Welcome back " + username.getText().toString(), Toast.LENGTH_SHORT).show();

@@ -7,5 +7,6 @@
         <item>UArizona</item>
         <item>LSU</item>
     </string-array>
+    <string name="login_error">Wrong username or password!</string>
 </resources>
 
