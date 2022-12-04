@@ -52,7 +52,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         // Fetches weather information from AccuWeather API
         readURL task = new readURL();
-        task.execute("https://dataservice.accuweather.com/locations/v1/cities/search?q=" + cityName + "&apikey=58ccmwU7fOT14BhHzHx6HzOKtLeSNA6O");
+        task.execute("https://dataservice.accuweather.com/locations/v1/cities/search?q=" + cityName + "&apikey=mteDuQEj77vdfI64kMmzJsks7zjQK6W6");
     }
 
     // Handles onclick events for the Details Activity
@@ -130,7 +130,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 // API call to get weather from key
                 try {
                     readURL weather = new readURL();
-                    j2 = weather.execute("https://dataservice.accuweather.com/currentconditions/v1/" + key + "?apikey=58ccmwU7fOT14BhHzHx6HzOKtLeSNA6O&language=en-us&details=true").get();
+                    j2 = weather.execute("https://dataservice.accuweather.com/currentconditions/v1/" + key + "?apikey=mteDuQEj77vdfI64kMmzJsks7zjQK6W6&language=en-us&details=true").get();
                     JSONArray weatherArray = new JSONArray(j2);
                     JSONObject weatherPart = weatherArray.getJSONObject(0);
                     weatherText.setText("Weather: " + weatherPart.getString("WeatherText") + "\n"
