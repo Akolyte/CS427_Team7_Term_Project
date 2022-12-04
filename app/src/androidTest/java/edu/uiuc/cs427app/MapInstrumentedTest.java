@@ -38,7 +38,7 @@ public class MapInstrumentedTest {
 
     @Test
     public void BostonMapTest() throws Exception {
-        City testCity = new City(BOSTON, BOSTON, 50, 50);
+        City testCity = new City(BOSTON, BOSTON, 42.3600825, -71.0588801);
         provider.addCity(testCity);
         Intent intent = new Intent();
         intent.setClass(ctx, MainActivity.class);
@@ -49,12 +49,12 @@ public class MapInstrumentedTest {
         onView(withText("MAP")).perform(click());
         Thread.sleep(SLEEP_TIME);
         onView(withId(R.id.cityName)).check(matches(withText(BOSTON)));
-        onView(withId(R.id.latlng)).check(matches(withText(containsString("lat/lng: (50.0,50.0)"))));
+        onView(withId(R.id.latlng)).check(matches(withText(containsString("lat/lng: (42.3600825,-71.0588801)"))));
     }
 
     @Test
     public void OrlandoMapTest() throws Exception {
-        City testCity = new City(ORLANDO, ORLANDO, 50, 50);
+        City testCity = new City(ORLANDO, ORLANDO, 28.5383832, -81.3789269);
         provider.addCity(testCity);
         Intent intent = new Intent();
         intent.setClass(ctx, MainActivity.class);
@@ -65,7 +65,8 @@ public class MapInstrumentedTest {
         onView(withText("MAP")).perform(click());
         Thread.sleep(SLEEP_TIME);
         onView(withId(R.id.cityName)).check(matches(withText(ORLANDO)));
-        onView(withId(R.id.latlng)).check(matches(withText(containsString("lat/lng: (50.0,50.0)"))));
+        onView(withId(R.id.latlng)).check(matches(withText(containsString("lat/lng: (28.5383832,-81.3789269)"))));
     }
 
 }
+
