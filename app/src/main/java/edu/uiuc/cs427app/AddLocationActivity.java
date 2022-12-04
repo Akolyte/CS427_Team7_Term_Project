@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +20,10 @@ import java.util.Arrays;
 // Activity class used for location searching and adding
 public class AddLocationActivity extends AppCompatActivity implements View.OnClickListener {
     private String username;
-    private City city;
     private UserProvider userProvider;
-    private AutocompleteSupportFragment autocompleteFragment;
     private static final String TAG = AddLocationActivity.class.getSimpleName();
+    private CityProxy cityProxy;
+
     // Sets up AddLocationActivity and constructs UserProvider
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
         userProvider.initializeTheme(userProvider, this);
         setContentView(R.layout.activity_add_location);
         setTitle(getString(R.string.app_name)+'-'+username);
-        initializeAutocompleteFragment();
+        this.cityProxy = new CityProxy(this);
     }
 
     // Handles onclick events associated with this Activity
@@ -40,7 +41,7 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.submitNewLocation:
+            case R.id.addLocationSubmit:
                 addLocation();
                 break;
         }
@@ -49,41 +50,12 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
     // Retrieves city information from thew new city form and stores it
     // Returns to Main Activity when complete
     private void addLocation() {
-        userProvider.addCity(city);
+        TextView locationTextView = findViewById(R.id.locationInput);
+        String location = locationTextView.getText().toString();
+        City aCity = this.cityProxy.getCityFromLocationString(location);
+        userProvider.addCity(aCity);
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("username",username);
         startActivity(intent);
     }
-
-    // Initialize an autocompleteFragment which can return city name predictions
-    // when user inputs a string
-    private void initializeAutocompleteFragment() {
-        if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), getString(R.string.app_key));
-        }
-        // Initialize the AutocompleteSupportFragment.
-        autocompleteFragment = (AutocompleteSupportFragment) getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
-
-        // Specify the types of place data to return.
-        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG));
-
-
-        // Set up a PlaceSelectionListener to handle the response.
-        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
-            // Create city instance upon selection
-            @Override
-            public void onPlaceSelected(@NonNull Place place) {
-                // TODO: Get info about the selected place.
-                city = new City(place.getId(), place.getName(), place.getLatLng().latitude, place.getLatLng().longitude);
-                Log.i(TAG, "Place: " + place.getName() + ", " + place.getId());
-            }
-            // Error handler for place selection
-            @Override
-            public void onError(@NonNull Status status) {
-                // TODO: Handle the error.
-                Log.i(TAG, "An error occurred: " + status);
-            }
-        });
-    }
-
 }

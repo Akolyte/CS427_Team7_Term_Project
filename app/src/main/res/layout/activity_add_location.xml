@@ -20,27 +20,22 @@
             android:text="City Name:" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textinputlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <fragment android:id="@+id/autocomplete_fragment"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/locationInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/addLocationSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-                />
-            <Button
-                android:id="@+id/submitNewLocation"
-                android:layout_width="match_parent"
-                    android:layout_height="200dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
-                android:text="Submit New Location" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="423dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:text="Submit" />
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
