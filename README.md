@@ -239,16 +239,18 @@ Members present: List the NetID of the people who attended the meeting
 </br>
 Meeting notes: Explain the overall team progress and a summary of discussion
 </br>
+</br>
+This week we discussed our progress for Milestone 5. After verifying that everyone had completed their work, we decided who would submit the materials needed to submit for Milestone 5. 
+</br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
+| aa106          | Testing adding a new city       | N/A |
+| ruhangm2       | testing user sign up            | Submission |
+| mingzhi2       | testing user log in             | N/A |
+| hojinr2        | testing removing a city +  Implementing Code Coverage      | N/A |
+| kaili6         | Testing Location Feature        | N/A |
+| cjfisch2       |Testing Weather Feature + Implementing Test Mocking | N/A |
+| hanhuis2       | testing user log off            | N/A |
 </br>
 
 
