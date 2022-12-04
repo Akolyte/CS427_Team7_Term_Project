@@ -241,14 +241,13 @@ Meeting notes: Explain the overall team progress and a summary of discussion
 </br>
 | NetID          | Progress from last week         | Tasks for next week   |
 | ---------------| --------------------------------| ----------------------|
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
-|                |                                 |                       |
+| aa106          | Testing adding a new city       | N/A |
+| ruhangm2       | testing user sign up            | Submission |
+| mingzhi2       | testing user log in             | N/A |
+| hojinr2        | testing removing a city +  Implementing Code Coverage      | N/A |
+| kaili6         | Testing Location Feature        | N/A |
+| cjfisch2       |Testing Weather Feature + Implementing Test Mocking | N/A |
+| hanhuis2       | testing user log off            | N/A |
 </br>
 
 
